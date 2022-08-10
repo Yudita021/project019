@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PraktikumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,46 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Routing Default
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/mahasiswa',function(){
+    echo 'Ini Mahasiswa';
+});
+
+Route::get('/mahasiswa/rpl/ubg',function(){
+    echo 'Ini Mahasiswa RPL Kampus UBG';
+});
+
+
+// Route Menggunakan Parameter
+Route::get('/mahasiswa/rpl/ubg/{semester}/{nim}',function($semester, $nim){
+    echo 'Ini Mahasiswa RPL Kampus UBG dengan NIM : ' . $nim . ', '.' Semester : '. $semester;
+});
+
+
+// Route dengan Redirect
+Route::redirect('/login','/masuk');
+
+
+// Route Group
+Route::group(['prefix' => '/admin'], function(){
+    Route::get('/mahasiswa', function(){
+        return 'Admin Mahasiswa';
+    });
+    Route::get('/dosen', function(){
+        return 'Admin Dosen';
+    });
+    Route::get('/pegawai', function(){
+        return 'Admin Pegawai';
+    });
+});
+
+Route::view('/pertemuan2','view-pertemuan2');
+
+
+Route::get('/praktikum', [PraktikumController::class, 'index']);
+Route::get('/praktikum/kpat', [PraktikumController::class, 'kpat']);
