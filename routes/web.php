@@ -52,7 +52,7 @@ Route::group(['prefix' => '/admin'], function(){
 });
 
 Route::view('/pertemuan2','view-pertemuan2');
-
+Route::view('/portofolio','portofolio');
 
 Route::get('/praktikum', [PraktikumController::class, 'index']);
 Route::get('/praktikum/kpat', [PraktikumController::class, 'kpat']);
