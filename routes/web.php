@@ -56,3 +56,9 @@ Route::view('/portofolio','portofolio');
 
 Route::get('/praktikum', [PraktikumController::class, 'index']);
 Route::get('/praktikum/kpat', [PraktikumController::class, 'kpat']);
+
+
+// CRUD DATA
+Route::get('/soal', 'App\Http\Controllers\MahasiswaController@index');
+Route::get('/soal/tambah', 'App\Http\Controllers\MahasiswaController@create')->name('soal.create');
+Route::post('soal/store', 'App\Http\Controllers\MahasiswaController@store')->name('soal.store');
