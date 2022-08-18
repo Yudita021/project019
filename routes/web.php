@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PraktikumController;
+use App\Http\Controllers\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,3 +63,5 @@ Route::get('/praktikum/kpat', [PraktikumController::class, 'kpat']);
 Route::get('/soal', 'App\Http\Controllers\MahasiswaController@index');
 Route::get('/soal/tambah', 'App\Http\Controllers\MahasiswaController@create')->name('soal.create');
 Route::post('soal/store', 'App\Http\Controllers\MahasiswaController@store')->name('soal.store');
+
+Route::get('/blog', 'App\Http\Controllers\BlogController@index');
