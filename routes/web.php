@@ -1,20 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PraktikumController;
-use App\Http\Controllers\BlogController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use app\Http\Controllers\MahasiswaController;
 
-// Routing Default
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,5 +51,6 @@ Route::get('/praktikum/kpat', [PraktikumController::class, 'kpat']);
 Route::get('/soal', 'App\Http\Controllers\MahasiswaController@index');
 Route::get('/soal/tambah', 'App\Http\Controllers\MahasiswaController@create')->name('soal.create');
 Route::post('soal/store', 'App\Http\Controllers\MahasiswaController@store')->name('soal.store');
-
-Route::get('/blog', 'App\Http\Controllers\BlogController@index');
+Route::delete('delete/{id}', 'App\Http\Controllers\MahasiswaController@destroy')->name('soal.remove');
+Route::get('edit/{soal}', 'App\Http\Controllers\MahasiswaController@edit')->name('soal.edit');
+Route::patch('update/{soal}', 'App\Http\Controllers\MahasiswaController@update')->name('soal.update');

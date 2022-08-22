@@ -15,12 +15,13 @@
            
                 <div class="card-body">
                     <table class="table table-bordered">
-                        <tr>
+                        <tr class="text-center">
                             <th>No</th>
                             <th>Nama Matkul</th>
                             <th>Dosen</th>
                             <th>Jumlah Soal</th>
                             <th>Keterangan</th>
+                            <th>Aksi</th>
                         </tr>
                         <tbody>
                             @foreach($ma as $soal)
@@ -30,6 +31,15 @@
                                 <td>{{$soal->dosen}}</td>
                                 <td>{{$soal->jumlah_soal}}</td>
                                 <td>{{$soal->keterangan}}</td>
+                                <td>
+                                
+                                  <form action="{{route('soal.remove', $soal->id)}}" method="post">
+                                  @csrf
+                                  @method('DELETE')
+                                    <button class="btn btn-sm btn-danger" onclick="return confirm ('Anda Yakin?')"><i class="fa-solid fa-trash"></i> Hapus</button>
+                                    <a href="{{ route('soal.edit', $soal->id) }}" class="btn btn-sm btn-warning"><i class="fa-solid fa-edit"></i> Edit</a>
+                                  </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
